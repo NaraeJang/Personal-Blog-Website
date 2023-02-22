@@ -1,3 +1,19 @@
-<%- include('header'); -%>
+<%- include('partials/header'); -%>
 
-<%- include('footer'); -%>
+<section class="container-fluid">
+
+    <h1>Compose</h1>
+
+    <form action="/compose" method="post">
+        <label class="mt-3">Title</label>
+        <input class="form-control" type="text" name="postTitle" required>
+
+        <label class="mt-3">Post</label>
+        <textarea class="form-control" type="text" name="postContent" required></textarea>
+        <button class="btn btn-primary mt-3 btn-green" type="submit" name="submitbtn">Publish</button>
+
+    </form>
+
+</section>
+
+<%- include('partials/footer'); -%>

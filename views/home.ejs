@@ -1,8 +1,13 @@
-<%- include('header'); -%>
+<%- include('partials/header'); -%>
 
-
+<section class="container-fluid">
 <h1>Home</h1>
-<p><%= mainHeading %></p>
+<p><%= homeDescription %></p>
 
+<% for (var i = o; i<newContent.length; i++) { %>
+    <h1> <%= newContent.postTitle[i] %> </h1>
+    <p> <%= %> </p>
+<% } %>
+</section>
 
-<%- include('footer'); -%>
+<%- include('partials/footer'); -%>
