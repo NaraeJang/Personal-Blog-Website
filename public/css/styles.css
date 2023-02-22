@@ -15,6 +15,11 @@
     color: #1abc9c !important;
 }
 
+.navbar-brand {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
 .footer-padding {
 	padding-bottom: 60px;
 }
