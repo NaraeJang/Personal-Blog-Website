@@ -1,11 +1,14 @@
 <%- include('partials/header'); -%>
 
 <section class="container-fluid">
-<h1>Home</h1>
-<p><%= homeDescription %></p>
+    <h1>Home</h1>
+    <p><%= homeDescription %></p>
 
- 
+    <% for(var i=0; i<updateAll.length; i++) { %>
+    <% console.log(updateAll[i].postTitle);%>
+   c <% } %>
 
-</section>
+   
 
-<%- include('partials/footer'); -%>
+
+    <%- include('partials/footer'); -%>

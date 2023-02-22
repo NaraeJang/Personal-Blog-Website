@@ -17,12 +17,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-const posts = [];
+let posts = [];
 
 app.get("/", function (req, res) {
-  console.log(posts);
   res.render("home", {
-    homeDescription: homeStartingContent
+    homeDescription: homeStartingContent,
+    updateAll: posts
   });
 
 });
@@ -50,7 +50,6 @@ app.post("/compose", function (req, res) {
   };
 
   posts.push(post);
-
   res.redirect("/");
 
 });
