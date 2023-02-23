@@ -28,7 +28,16 @@ app.get("/", function (req, res) {
 
 
 app.get("/posts/:title", function(req, res) { 
+const requestTitle = req.params.title;
 
+posts.forEach(function(post) {
+const actualTitle = post.postTitle;
+
+if (actualTitle === requestTitle) {
+  console.log("It's working!");
+};
+
+});
 
 
 });
