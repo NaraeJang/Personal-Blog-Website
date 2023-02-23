@@ -28,15 +28,7 @@ app.get("/", function (req, res) {
 
 
 app.get("/posts/:title", function(req, res) { 
-  const requestedTitle = req.params.title;
-  
-  posts.forEach(function(post){
-    const storedTitle = post.postTitle;
 
-    if (storedTitle === requestedTitle) {
-      console.log("Match found!");
-    } 
-  });
 
 
 });
