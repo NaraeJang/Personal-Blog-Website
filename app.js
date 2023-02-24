@@ -21,6 +21,7 @@ app.use(express.static("public"));
 let posts = [];
 
 app.get("/", function (req, res) {
+  branch main
   res.render("home", {
     homeDescription: homeStartingContent,
     updateAll: posts
