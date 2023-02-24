@@ -21,15 +21,10 @@ app.use(express.static("public"));
 let posts = [];
 
 app.get("/", function (req, res) {
-
-  posts.forEach(function(post) {
-    res.render("home", {
-      homeDescription: homeStartingContent,
-      updateAll: posts
-    });
-
+  res.render("home", {
+    homeDescription: homeStartingContent,
+    updateAll: posts
   });
-
 });
 
 
