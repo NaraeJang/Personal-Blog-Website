@@ -28,21 +28,23 @@ app.get("/", function (req, res) {
 });
 
 
-app.get("/posts/:title", function(req, res) { 
-const requestTitle = _.lowerCase(req.params.title);
+app.get("/posts/:title", function (req, res) {
+  const requestTitle = _.lowerCase(req.params.title);
 
-posts.forEach(function(post) {
-const actualTitle = _.lowerCase(post.postTitle);
+  posts.forEach(function (post) {
+    const actualTitle = _.lowerCase(post.postTitle);
 
-console.log(actualTitle);
+    if (actualTitle === requestTitle) {
+      res.render("post", {
+        title: post.postTitle,
+        content: post.postContent
+      });
 
-if (actualTitle === requestTitle) {
-  console.log("It's working!");
-} else {
-  console.log("not working");
-}
+    } else {
+      console.log("not working");
+    }
 
-});
+  });
 
 });
 
