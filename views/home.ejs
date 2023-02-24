@@ -7,8 +7,12 @@
 
     <% updateAll.forEach(function(all) { %>
     <h1> <%= all.postTitle %> </h1>
-    <p> <%= all.postContent %> </p>
+    <p> <%= all.postContent.substring(0,100) + "..." %>
+    <a href="/posts/<%=all.postTitle%>">Read More</a>
+    </p>
+
     <% }); %>
+
 
 
 
