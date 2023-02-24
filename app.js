@@ -22,8 +22,6 @@ let posts = [];
 
 app.get("/", function (req, res) {
   branch main
-  branch main2
-  
   res.render("home", {
     homeDescription: homeStartingContent,
     updateAll: posts
