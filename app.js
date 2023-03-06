@@ -47,33 +47,34 @@ app.get("/", function (req, res) {
 
   Post.find().then(posts => {
     res.render("home", {
-        homeDescription: homeStartingContent,
-        posts: posts
-      });
-  }).catch(err => {console.log(err);});
-
-});
-
-
-
-app.get("/posts/:title", function (req, res) {
-
-  const requestTitle = _.lowerCase(req.params.title);
-
-  posts.forEach(function (post) {
-    const actualTitle = _.lowerCase(post.postTitle);
-
-    if (actualTitle === requestTitle) {
-      res.render("post", {
-        title: post.postTitle,
-        content: post.postContent
-      });
-    } else {
-      console.log("not working");
-    }
+      homeDescription: homeStartingContent,
+      posts: posts
+    });
+  }).catch(err => {
+    console.log(err);
   });
 
 });
+
+
+
+app.get("/posts/:postId", function (req, res) {
+
+  const requestedPostId = req.params.postId;
+
+  Post.findOne({
+    _id:requestedPostId
+  }).then(post => {
+      res.render("post", {
+        title: post.title,
+        content: post.post
+      });
+  }).catch(err => {
+    console.log(err);
+  });
+  
+});
+
 
 
 
