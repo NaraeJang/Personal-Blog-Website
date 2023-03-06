@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(express.static("public"));
 
-let posts = [];
+// let posts = [];
 
 mongoose.connect('mongodb://127.0.0.1:27017/blogDB', {
   useNewUrlParser: true
@@ -45,14 +45,19 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 app.get("/", function (req, res) {
 
-  res.render("home", {
-    homeDescription: homeStartingContent,
-    updateAll: posts
-  });
+  Post.find().then(posts => {
+    res.render("home", {
+        homeDescription: homeStartingContent,
+        posts: posts
+      });
+  }).catch(err => {console.log(err);});
+
 });
 
 
+
 app.get("/posts/:title", function (req, res) {
+
   const requestTitle = _.lowerCase(req.params.title);
 
   posts.forEach(function (post) {
@@ -63,14 +68,14 @@ app.get("/posts/:title", function (req, res) {
         title: post.postTitle,
         content: post.postContent
       });
-
     } else {
       console.log("not working");
     }
-
   });
 
 });
+
+
 
 app.get("/about", function (req, res) {
   res.render("about", {
@@ -78,23 +83,23 @@ app.get("/about", function (req, res) {
   });
 });
 
+
+
 app.get("/contact", function (req, res) {
   res.render("contact", {
     contactDescription: contactContent
   });
 });
 
+
+
 app.get("/compose", function (req, res) {
   res.render("compose");
 });
 
-app.post("/compose", function (req, res) {
-  // const post = {
-  //   postTitle: req.body.postTitle,
-  //   postContent: req.body.postContent
-  // };
 
-  // posts.push(post);
+
+app.post("/compose", function (req, res) {
 
   const postTitle = req.body.postTitle;
   const postContent = req.body.postContent;
@@ -113,14 +118,6 @@ app.post("/compose", function (req, res) {
   res.redirect("/");
 
 });
-
-
-
-
-
-
-
-
 
 
 
